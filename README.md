@@ -123,3 +123,15 @@ python manage.py migrate
 ```bash
 python manage.py runserver
 ```
+
+### Запуск проекта в Docker
+Для того чтобы создать запустить приложение в Docker нужно:
+
+* Создать образ для Docker-контейнера:
+```bash
+docker build . -t smart_home
+```
+* Запустить собранный образ:
+```bash
+docker run --rm -it -p 80:8000 smart_home
+```
