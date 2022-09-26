@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
-CMD gunicorn smart_home.wsgi -b 0.0.0.0:8000
+CMD ./docker-entrypoint.sh

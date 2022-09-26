@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: '1qaz!QAZ'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_DB: 'netology_smart_home'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - db_net
+
+  nginx:
+    image: nginx:latest
+    depends_on:
+      - smart_home
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - nginx_static:/usr/share/nginx/html/static:ro
+    networks:
+      - smart_home_net
+
+  smart_home:
+    build: ./
+    depends_on:
+      - db
+    volumes:
+      - nginx_static:/app/static
+    networks:
+      - db_net
+      - smart_home_net
+
+networks:
+  smart_home_net:
+  db_net:
+
+volumes:
+  db-data:
+  nginx_static:
