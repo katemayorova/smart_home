@@ -1,0 +1,24 @@
+name: CICD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chek repo
+        uses: actions/checkout@v2
+
+      - name: Setup python
+        uses: action/setup python@v3
+        with:
+          python-version: 3.8
+
+      - name: install requirements
+        run: pip install -r requirements.txt
+
+      - name: linting
+        run: flake8 smart_home
