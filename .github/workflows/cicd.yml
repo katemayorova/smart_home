@@ -20,5 +20,5 @@ jobs:
       - name: install requirements
         run: pip install -r requirements.txt
 
-      - name: linting
-        run: flake8 smart_home
+      - name: Testing
+        run: python manage.py tests

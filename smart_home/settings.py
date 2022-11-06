@@ -79,12 +79,8 @@ WSGI_APPLICATION = 'smart_home.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_smart_home',
-        'HOST': 'db',
-        'PORT': '5432',
-        'PASSWORD': '1qaz!QAZ',
-        'USER': 'postgres'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -134,8 +130,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_RENDERER_CLASSES': (
-#         'rest_framework.renderers.JSONRenderer',
-#     )
-# }
+REST_FRAMEWORK = {
+     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+}

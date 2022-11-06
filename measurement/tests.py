@@ -1,3 +1,6 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class MeasurementTestCase(TestCase):
+    def test_measurement(self):
+        assert True
