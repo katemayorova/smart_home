@@ -34,4 +34,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            echo '124'
+            cd smart_home
+            git fetch
+            git checkout ${{ github.sha }}
+            docker compose --build up -d
